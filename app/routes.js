@@ -85,6 +85,7 @@ app.get('/post/:zebra', function(req, res) {  //  /:zebra = query param
 //Create Post =========================================================================
 app.post('/qpPost', upload.single('file-to-upload'), (req, res, next) => {  //one picture to post   //next????
 let uId = ObjectId(req.session.passport.user) // uId === the individual
+<<<<<<< HEAD
 db.collection('posts').save({
   posterId: uId,
   caption: req.body.caption,
@@ -92,6 +93,9 @@ db.collection('posts').save({
   imgPath: 'images/uploads/' + req.file.filename
 },
 (err, result) => {
+=======
+db.collection('posts').save({posterId: uId, caption: req.body.caption, likes: 0, imgPath: 'images/uploads/' + req.file.filename}, (err, result) => {
+>>>>>>> 040a0b3effafdbb0a7e67a40490abbd52f1e81ba
   if (err) return console.log(err)
   console.log('saved to database')
   res.redirect('/profile')
@@ -171,6 +175,7 @@ app.delete('/messages', (req, res) => {
 // })
 
 
+<<<<<<< HEAD
 app.delete('/posts', isLoggedIn, (req, res) => {
   console.log(req.body)
   const curUser= req.body.id
@@ -188,6 +193,23 @@ app.delete('/posts', isLoggedIn, (req, res) => {
     //   res.send(404, "not found mike pennisi")
     //   return
     // }
+=======
+app.delete('/deltePictures', isLoggedIn, (req, res) => {
+  let uId = ObjectId(req.session.passport.user)
+  console.log(uId+'uID')
+  console.log(ObjectId(req.body._id) +' (req.body._id)')
+  // let postId = ObjectId(req.params.id)
+  db.collection('posts').findOneAndDelete({
+    _id: ObjectId(req.body._id),
+    posterId: uId
+  }, (err, result) => {
+    console.log(result)
+    if (err) return res.send(500, err)
+    if(result.value === null){
+      res.send(404, "not found mike pennisi")
+      return
+    }
+>>>>>>> 040a0b3effafdbb0a7e67a40490abbd52f1e81ba
     res.send('Message deleted!')
   })
 })

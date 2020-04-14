@@ -79,6 +79,7 @@
           <% } %>
           <% } %>
         </ul>
+<<<<<<< HEAD
         <!-- <h2>Add a message</h2> -->
         <% if (user.local.email) { %>
         <!-- <form action="/messages" method="POST">
@@ -86,6 +87,15 @@
           <input type="text" placeholder="message" name="msg">
           <button type="submit">Submit</button>
         </form> -->
+=======
+        <h2>Add a message</h2>
+        <% if (user.local.email) { %>
+        <form action="/messages" method="POST">
+          <input type="text" value="<%= user.local.email %>" name="name">
+          <input type="text" placeholder="message" name="msg">
+          <button type="submit">Submit</button>
+        </form>
+>>>>>>> 040a0b3effafdbb0a7e67a40490abbd52f1e81ba
         <% } %>
         <h2>Add a post</h2>
         <form action="/qpPost" enctype="multipart/form-data" method="post">
@@ -140,6 +150,7 @@
 
               <% for(let i = 0; i<posts.length; i++){    %>
               <div class="col-md-4 ftco-animate">
+<<<<<<< HEAD
                 <h3><%= posts[i].caption %></h3>
 
                 <a href="<%= posts[i].imgPath%>" class="photography-entry img image-popup d-flex justify-content-center align-items-center" style="background-image: url(<%= posts[i].imgPath%>);">
@@ -153,6 +164,19 @@
               </div>
               <% } %>
               <!--
+=======
+                <a href="<%= posts[i].imgPath%>" class="photography-entry img image-popup d-flex justify-content-center align-items-center" style="background-image: url(<%= posts[i].imgPath%>);">
+                  <div class="overlay"></div>
+                  <div class="text text-center">
+                    <h3><%= posts[i].caption %></h3>
+                    <span class="tag"><%= posts[i].likes %>l</span>
+                  </div>
+                </a>
+                <button class='deletePic'>DELETE</button>
+              </div>
+              <% } %>
+
+>>>>>>> 040a0b3effafdbb0a7e67a40490abbd52f1e81ba
               <div class="col-md-4 ftco-animate">
                 <a href="images/image_2.jpg" class="photography-entry img image-popup d-flex justify-content-center align-items-center" style="background-image: url(images/image_2.jpg);">
                   <div class="overlay"></div>
@@ -253,10 +277,17 @@
                 </a>
               </div>
             </div>
+<<<<<<< HEAD
           </div> -->
               <!-- </section>
         <footer class="ftco-footer ftco-bg-dark ftco-section"> -->
               <!-- fix <div class="container px-md-5">
+=======
+          </div>
+        </section>
+        <footer class="ftco-footer ftco-bg-dark ftco-section">
+          <!-- fix <div class="container px-md-5">
+>>>>>>> 040a0b3effafdbb0a7e67a40490abbd52f1e81ba
         <div class="row mb-5">
           <div class="col-md">
             <div class="ftco-footer-widget mb-4 ml-md-4">
@@ -300,11 +331,19 @@
             <!-- <p>Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0.
   Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
    Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0.</p> -->
+<<<<<<< HEAD
             </div>
           </div>
       </div> -->
       </footer>
     </div><!-- END COLORLIB-MAIN -->
+=======
+      </div>
+    </div>
+  </div> -->
+  </footer>
+  </div><!-- END COLORLIB-MAIN -->
+>>>>>>> 040a0b3effafdbb0a7e67a40490abbd52f1e81ba
   </div><!-- END COLORLIB-PAGE -->
 
   <!-- loader -->
