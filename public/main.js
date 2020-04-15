@@ -72,7 +72,6 @@ Array.from(trash).forEach(function(element) {
 Array.from(deletePic).forEach(function(element) {
       element.addEventListener('click', function(){
         console.log('THIS DELETE BUTTON WORKS')
-<<<<<<< HEAD
         const caption = this.parentNode.childNodes[1].innerText
         console.log(caption)
         const info = this.parentNode.childNodes
@@ -85,52 +84,29 @@ Array.from(deletePic).forEach(function(element) {
         console.log(_id)
         console.log(imgPath + ' imgPath')
         fetch('posts', {
-=======
-        const name = this.parentNode.parentNode.childNodes[1].innerText
-        console.log(name)
-        const msg = this.parentNode.parentNode.childNodes.innerHTML
-        const imgPath = this.parentNode.parentNode.childNodes[3].src
-        console.log(msg)
-        fetch('deltePictures', {
->>>>>>> 040a0b3effafdbb0a7e67a40490abbd52f1e81ba
           method: 'delete',
           headers: {
             'Content-Type': 'application/json'
           },
           body: JSON.stringify({
             'imgPath': imgPath,
-<<<<<<< HEAD
             'caption': caption,
             'likes': Number(likes),
             '_id': _id,
           })
         }).then(function (response) {
           window.location.reload()
-=======
-          })
-        }).then(function (response) {
-          // window.location.reload()
->>>>>>> 040a0b3effafdbb0a7e67a40490abbd52f1e81ba
         })
       });
 });
 
 // deletePic.addEventListener('click', function(){
-<<<<<<< HEAD
   // console.log('DELETE BUTTON')
   // const imgPath = this.parentNode.parentNode.childNodes[3].src
   // // const _id = this.parentNode.parentNode.getAttribute("data-id")
   //  console.log(this.parentNode.parentNode)
   // const caption = this.parentNode.parentNode.childNodes[5].innerText
   // const likes = this.parentNode.parentNode.childNodes[7].innerText //
-=======
-//   console.log('DELETE BUTTON')
-//   const imgPath = this.parentNode.parentNode.childNodes[3].src
-//   // const _id = this.parentNode.parentNode.getAttribute("data-id")
-//    console.log(this.parentNode.parentNode)
-//   // const caption = this.parentNode.parentNode.childNodes[5].innerText
-//   // const likes = this.parentNode.parentNode.childNodes[7].innerText //
->>>>>>> 040a0b3effafdbb0a7e67a40490abbd52f1e81ba
 //    fetch('deltePictures', {
 //     method: 'delete',
 //     headers: {
