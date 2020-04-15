@@ -34,14 +34,14 @@ mongoose.connect(configDB.url, (err, database) => {
 });
 
 //app.listen(port, () => {
-    // MongoClient.connect(configDB.url, { useNewUrlParser: true }, (error, client) => {
-    //     if(error) {
-    //         throw error;
-    //     }
-    //     db = client.db(configDB.dbName);
-    //     console.log("Connected to `" + configDB.dbName + "`!");
-    //     require('./app/routes.js')(app, passport, db);
-    // });
+// MongoClient.connect(configDB.url, { useNewUrlParser: true }, (error, client) => {
+//     if(error) {
+//         throw error;
+//     }
+//     db = client.db(configDB.dbName);
+//     console.log("Connected to `" + configDB.dbName + "`!");
+//     require('./app/routes.js')(app, passport, db);
+// });
 //});
 
 require('./config/passport')(passport); // pass passport for configuration
@@ -58,9 +58,9 @@ app.set('view engine', 'ejs'); // set up ejs for templating
 // required for passport
 require('./config/passport')(passport);
 app.use(session({
-    secret: 'rcbootcamp2019a', // session secret
-    resave: true,
-    saveUninitialized: true
+  secret: 'rcbootcamp2019a', // session secret
+  resave: true,
+  saveUninitialized: true
 }));
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
