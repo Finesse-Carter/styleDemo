@@ -46,7 +46,6 @@ module.exports = function(app, passport, db, multer, ObjectId) {
     if(req.user.local.email){
       db.collection('posts').find({'posterId': uId}).toArray((err, result) => {
      console.log("pics" + result);
-
         res.render('fits.ejs', {
         user: req.user,
         posts: result,
