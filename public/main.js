@@ -1,3 +1,5 @@
+// import { Collection } from "mongoose";
+
 var thumbUp = document.getElementsByClassName("fa-thumbs-up");
 var trash = document.getElementsByClassName("fa-trash");
 var thumbDown = document.getElementsByClassName("fa-thumbs-down")
@@ -89,7 +91,11 @@ Array.from(deletePic).forEach(function(element) {
 });
 Array.from(matchPic).forEach(function(element) {
 element.addEventListener('click',() =>{
+  console.log("click");
+  const col = element.getAttribute('data-color')
   const _id = element.getAttribute('data-id');
+  console.log(_id);
+  
   fetch('posts', {
     method: 'post',
     headers: {
@@ -97,13 +103,13 @@ element.addEventListener('click',() =>{
     },
     body: JSON.stringify({
       '_id': _id,
-      'colors': colorPalette,
-      'color': primeColor,
+      'col':col,
+      // 'colors': colorPalette,
+      // 'color': primeColor,
     })
   }).then(function (response) {
-    window.location.reload()
+    // window.location.reload()
   })
-  // check
-    console.log('hellow world');   
+ 
 });
 });

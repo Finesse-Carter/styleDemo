@@ -37,11 +37,21 @@ module.exports = function(app, passport, db, multer, ObjectId) {
   app.get('/single', function(req, res) {
     res.render('single.ejs');
   });
+
+
+
   app.get('/fits', function(req, res) {
+    console.log(req.body);
+
     if(req.user.local.email){
-      res.render('fits.ejs', {
+      db.collection('posts').find({'posterId': uId}).toArray((err, result) => {
+     console.log("pics" + result);
+
+        res.render('fits.ejs', {
         user: req.user,
+        posts: result,
       })
+    })
     }
 
   });
@@ -67,6 +77,28 @@ module.exports = function(app, passport, db, multer, ObjectId) {
     }
   });
 
+  app.post('/colorSearch', isLoggedIn, (req, res) => {  //one picture to post   //next????
+    let uId = ObjectId(req.session.passport.user) // uId === the individual
+    // var colorThief = new ColorThief();
+    // let primeColor = colorThief.getColor(req.file.path);
+    // let colorPalette = colorThief.getPalette( req.file.path, 8);
+    // console.log(colorPalette);
+    // console.log(primeColor);
+
+    db.collection('colors').save({
+      posterId: uId,
+      caption: req.body.caption,
+      imgPath: req.file.path,
+      imgUrl: "images/uploads/"+ req.file.filename,
+      color: primeColor,
+      colors: colorPalette,
+    },
+    (err, result) => {
+      if (err) return console.log(err)
+      console.log('saved to database')
+      res.redirect('/profile')
+    })
+  });
 
   // FEED PAGE =========================
   app.get('/feed', isLoggedIn, function(req, res) {
