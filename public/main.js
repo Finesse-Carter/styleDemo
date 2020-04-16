@@ -74,8 +74,7 @@ Array.from(deletePic).forEach(function(element) {
       element.addEventListener('click', function(){
         console.log('THIS DELETE BUTTON WORKS')
         const _id = element.getAttribute('data-id');
-        console.log(_id)
-        // console.log(imgPath + ' imgPath')
+        console.log(_id);
         fetch('posts', {
           method: 'delete',
           headers: {

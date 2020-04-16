@@ -40,9 +40,9 @@ module.exports = function(app, passport, db, multer, ObjectId) {
 
 
 
-  app.get('/fits', function(req, res) {
+  app.get('/fits', isLoggedIn, function(req, res) {
     console.log(req.body);
-
+    let uId = ObjectId(req.session.passport.user)
     if(req.user.local.email){
       db.collection('posts').find({'posterId': uId}).toArray((err, result) => {
      console.log("pics" + result);
@@ -232,7 +232,7 @@ module.exports = function(app, passport, db, multer, ObjectId) {
       console.log(result)
       if (err) return res.send(500, err)
       if(result.value === null){
-        res.send(404, "not found mike pennisi")
+        res.send(404, "not found")
         return
       };
       res.send('Message deleted!')
