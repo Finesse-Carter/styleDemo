@@ -138,18 +138,6 @@ module.exports = function(app, passport, db, multer, ObjectId) {
     })
   });
 
-
-  // });
-  //   app.get(`/profile${user.local.email}`, isLoggedIn, function(req, res) {
-  //     db.collection('messages').find().toArray((err, result) => {
-  //       if (err) return console.log(err)
-  //       res.render('profile.ejs', {
-  //         user : req.user,
-  //         messages: result
-  //       })
-  //     })
-  // });
-
   // LOGOUT ==============================
   app.get('/logout', function(req, res) {
     req.logout();
@@ -203,13 +191,7 @@ module.exports = function(app, passport, db, multer, ObjectId) {
       res.send('Message deleted!')
     })
   })
-  // app.delete('/deltePictures', (req, res) => {
-  //   db.collection('posts').findOneAndDelete({posterId: uId}, (err, result) => {
-  //     if (err) return res.send(500, err)
-  //     res.send('Photo deleted!')
-  //   })
-  // })
-
+ 
   app.delete('/posts', isLoggedIn, (req, res) => {
     let uId = ObjectId(req.session.passport.user)
     console.log(uId+'uId')
