@@ -91,18 +91,16 @@ Array.from(deletePic).forEach(function(element) {
 Array.from(matchPic).forEach(function(element) {
 element.addEventListener('click',() =>{
   console.log("click");
-  const col = element.getAttribute('data-color')
   const _id = element.getAttribute('data-id');
   console.log(_id);
   
-  fetch('posts', {
+  fetch('matches', {
     method: 'post',
     headers: {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
       '_id': _id,
-      'col':col,
       // 'colors': colorPalette,
       // 'color': primeColor,
     })

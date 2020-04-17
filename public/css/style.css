@@ -9,6 +9,9 @@
   background: #dddddd;
   border-radius: 50%;
 }
+.select {
+  padding-left: 17rem;
+}
 .dotList{
   display: inline-block;
 }

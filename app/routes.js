@@ -63,8 +63,7 @@ module.exports = function(app, passport, db, multer, ObjectId) {
       db.collection('messages').find().toArray((err, result) => {
 
         db.collection('posts').find({'posterId': uId}).toArray((err, result) => {
-          //console.log(result)
-          // console.log(req)
+         
           if (err) return console.log(err)
           res.render('profile.ejs', {
             user: req.user,
@@ -76,26 +75,18 @@ module.exports = function(app, passport, db, multer, ObjectId) {
     }
   });
 
-  app.post('/colorSearch', isLoggedIn, (req, res) => {  //one picture to post   //next????
+  app.post('/fits', isLoggedIn, (req, res) => { 
     let uId = ObjectId(req.session.passport.user) // uId === the individual
-    // var colorThief = new ColorThief();
-    // let primeColor = colorThief.getColor(req.file.path);
-    // let colorPalette = colorThief.getPalette( req.file.path, 8);
-    // console.log(colorPalette);
-    // console.log(primeColor);
-
-    db.collection('colors').save({
-      posterId: uId,
-      caption: req.body.caption,
-      imgPath: req.file.path,
-      imgUrl: "images/uploads/"+ req.file.filename,
-      color: primeColor,
-      colors: colorPalette,
-    },
-    (err, result) => {
-      if (err) return console.log(err)
-      console.log('saved to database')
-      res.redirect('/profile')
+    
+ db.collection('posts').findOne({_id: ObjectId(req.body._id)},(err, result) => {
+          //console.log(result)
+          // console.log(req)
+          if (err) return console.log(err)
+          res.render('fits.ejs', {
+            user: req.user,
+            post: result,
+          })
+   
     })
   });
 

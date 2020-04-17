@@ -1,8 +1,25 @@
-body{
-  padding-top:80px;
-  word-wrap:break-word;
-  background-color:  #9593a588;
+body {
+  padding-top: 253px;
+  word-wrap: break-word;
+  background-image: url(img/blackprints3.jpg);
+  background-position: center;
+  background-color: #9593a588;
 }
-/* img{
-  height: 200px;
-} */
+.jumbotron {
+  padding: 30px;
+  margin-bottom: 30px;
+  font-size: 21px;
+  font-weight: 200;
+  line-height: 2.1428571435;
+  /* color: inherit; */
+  background-color: #4475a200;
+}
+.jumbotron h1 {
+  font-size: 149px;
+  font-family: serif;
+  color: aliceblue;
+}
+.jumbotron p {
+  line-height: 1.4;
+  color: aliceblue;
+}
