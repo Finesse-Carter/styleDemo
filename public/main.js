@@ -1,4 +1,7 @@
 // import { Collection } from "mongoose";
+var chromatism = require('chromatism');
+var colorThief = new ColorThief();
+
 
 var thumbUp = document.getElementsByClassName("fa-thumbs-up");
 var trash = document.getElementsByClassName("fa-trash");

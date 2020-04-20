@@ -1,5 +1,6 @@
 module.exports = function(app, passport, db, multer, ObjectId) {
   var ColorThief = require('color-thief');
+  var chromatism = require('chromatism');
   // Image Upload Code =========================================================================
   // Make a Var for the storing of imgs => multer.(multer Method?)
   var storage = multer.diskStorage({
@@ -63,7 +64,7 @@ module.exports = function(app, passport, db, multer, ObjectId) {
       db.collection('messages').find().toArray((err, result) => {
 
         db.collection('posts').find({'posterId': uId}).toArray((err, result) => {
-         
+
           if (err) return console.log(err)
           res.render('profile.ejs', {
             user: req.user,
@@ -75,9 +76,9 @@ module.exports = function(app, passport, db, multer, ObjectId) {
     }
   });
 
-  app.post('/fits', isLoggedIn, (req, res) => { 
+  app.post('/fits', isLoggedIn, (req, res) => {
     let uId = ObjectId(req.session.passport.user) // uId === the individual
-    
+
  db.collection('posts').findOne({_id: ObjectId(req.body._id)},(err, result) => {
           //console.log(result)
           // console.log(req)
@@ -86,7 +87,7 @@ module.exports = function(app, passport, db, multer, ObjectId) {
             user: req.user,
             post: result,
           })
-   
+
     })
   });
 
@@ -119,9 +120,9 @@ module.exports = function(app, passport, db, multer, ObjectId) {
     var colorThief = new ColorThief();
     let primeColor = colorThief.getColor(req.file.path);
     let colorPalette = colorThief.getPalette( req.file.path, 8);
-    console.log(colorPalette);
-    console.log(primeColor);
+//+++++++++++++
 
+//+++++++++++++++
     db.collection('posts').save({
       posterId: uId,
       caption: req.body.caption,
@@ -191,7 +192,7 @@ module.exports = function(app, passport, db, multer, ObjectId) {
       res.send('Message deleted!')
     })
   })
- 
+
   app.delete('/posts', isLoggedIn, (req, res) => {
     let uId = ObjectId(req.session.passport.user)
     console.log(uId+'uId')
