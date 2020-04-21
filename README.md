@@ -10,7 +10,7 @@
 
 ​
 ![alt text](Screenshot.png)
-![alt text](ScreenShot2.png)
+![img](ScreenShot2.png)
 ![alt text](profileScreenShot.png)
 ![alt_text](homePageSreenShot.png)
 ​
