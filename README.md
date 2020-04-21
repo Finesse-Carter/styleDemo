@@ -9,8 +9,8 @@
 2. Navigate to `localhost:7777`
 
 ​
-![alt text](Screenshot (143).png)
-![alt text](loginScreenShot.png)
+![alt text](Screenshot.png)
+![alt text](ScreenShot2.png)
 ![alt text](profileScreenShot.png)
 ![alt_text](homePageSreenShot.png)
 ​
