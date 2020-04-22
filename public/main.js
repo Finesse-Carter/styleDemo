@@ -1,6 +1,6 @@
 // import { Collection } from "mongoose";
-var chromatism = require('chromatism');
-var colorThief = new ColorThief();
+// var chromatism = require('chromatism');
+// var colorThief = new ColorThief();
 
 
 var thumbUp = document.getElementsByClassName("fa-thumbs-up");
@@ -90,26 +90,4 @@ Array.from(deletePic).forEach(function(element) {
           window.location.reload()
         })
       });
-});
-Array.from(matchPic).forEach(function(element) {
-element.addEventListener('click',() =>{
-  console.log("click");
-  const _id = element.getAttribute('data-id');
-  console.log(_id);
-  
-  fetch('matches', {
-    method: 'post',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-      '_id': _id,
-      // 'colors': colorPalette,
-      // 'color': primeColor,
-    })
-  }).then(function (response) {
-    // window.location.reload()
-  })
- 
-});
 });

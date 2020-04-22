@@ -4,4 +4,25 @@ body{
 h1, .h1 {
     font-size: 36px;
     font-family: serif;
+text-align: center;
+}
+label{
+    font-size: 20px;
+}
+.coBox{
+    border: 1px solid black;
+    background-color: white;
+}
+.btn-lg {
+    margin-left: 38%;
+    padding: 10px 37px;
+    font-size: 18px;
+    line-height: 1.33;
+    border-radius: 6px;
+    text-align: center;
+}
+.btn-warning {
+    color: #fff;
+    background-color:rgb(158, 147, 165);
+    border-color: rgb(165, 147, 163);
 }

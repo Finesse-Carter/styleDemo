@@ -9,10 +9,10 @@
 2. Navigate to `localhost:7777`
 
 ​
-![](Screenshot.png)
+<!-- ![](Screenshot.png)
 ![](ScreenShot2.png)
 ![alt text](profileScreenShot.png)
-![alt_text](homePageSreenShot.png)
+![alt_text](homePageSreenShot.png) -->
 ​
 ​
 ​

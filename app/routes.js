@@ -21,7 +21,23 @@ module.exports = function(app, passport, db, multer, ObjectId) {
     res.render('index.ejs');
   });
   app.get('/gallery',isLoggedIn, function(req, res) {
-    res.render('gallery.ejs');
+    let uId = ObjectId(req.session.passport.user)   //uId = unique id from passport
+    if(req.user.local.email){
+      // db.collection('messages').find().toArray((err, result) => {
+
+        db.collection('posts').find().toArray((err, result) => {
+console.log(result,'this is fun');
+
+          if (err) return console.log(err)
+          res.render('gallery.ejs', {
+            user: req.user,
+            // messages: result,
+            posts: result   //post = result from DB
+          })
+        })
+      // })
+    }
+
   });
   app.get('/blog', function(req, res) {
     res.render('blog.ejs');
@@ -58,7 +74,8 @@ module.exports = function(app, passport, db, multer, ObjectId) {
 
   // PROFILE SECTION =========================
   app.get('/profile', isLoggedIn, function(req, res) {
-    console.log(req.user.local.email)
+    // console.log(req.user.local.email)
+    // console.log(chromatism);
     let uId = ObjectId(req.session.passport.user)   //uId = unique id from passport
     if(req.user.local.email){
       db.collection('messages').find().toArray((err, result) => {
@@ -75,6 +92,20 @@ module.exports = function(app, passport, db, multer, ObjectId) {
       })
     }
   });
+
+
+  app.get('/profile/fits/:outFit', function(req, res) {
+    console.log(req.params.outFit);
+    var uId = ObjectId(req.params.outFit)
+    db.collection('posts').find({"_id": uId}).toArray((err, result) => {
+      if (err) return console.log(err)
+      console.log(result,"its raining");
+
+      res.render('fits.ejs', {
+        posts: result
+      })
+    })
+});
 
   app.post('/fits', isLoggedIn, (req, res) => {
     let uId = ObjectId(req.session.passport.user) // uId === the individual
@@ -131,6 +162,9 @@ module.exports = function(app, passport, db, multer, ObjectId) {
       imgUrl: "images/uploads/"+ req.file.filename,
       color: primeColor,
       colors: colorPalette,
+      clothing: req.body.clothing,
+      shareFeed: req.body.shareFeed,
+      title: req.body.title
     },
     (err, result) => {
       if (err) return console.log(err)
@@ -197,7 +231,6 @@ module.exports = function(app, passport, db, multer, ObjectId) {
     let uId = ObjectId(req.session.passport.user)
     console.log(uId+'uId')
     console.log(ObjectId(req.body._id) +' (req.body._id)')
-    // let postId = ObjectId(req.params.id)
     db.collection('posts').findOneAndDelete({
       _id: ObjectId(req.body._id),
       posterId: uId

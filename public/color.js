@@ -10,5 +10,7 @@ console.log("primecolor",primeColor);
  let test = colorPalette.forEach(colorx =>{
 chromatism.complementary(colorx).rgb
   })
-
-  console.log(test)
+  
+  var newColour = chromatism.complementary( colour ).rgb;
+  console.log("this is a test",test)
+console.log( newColour);
