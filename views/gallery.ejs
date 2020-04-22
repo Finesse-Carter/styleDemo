@@ -74,16 +74,7 @@
 			<section class="ftco-section-2">
 				<div class="photograhy">
 					<div class="row no-gutters">
-						<div class="col-md-4 ftco-animate">
-							<a href="images/image_1.jpg" class="photography-entry img image-popup d-flex justify-content-center align-items-center" style="background-image: url(images/image_1.jpg);">
-								
-								<div class="overlay"></div>
-								<div class="text text-center">
-									<h3>Work 01</h3>
-									<span class="tag">Model</span>
-								</div>
-							</a>
-						</div>
+				
 						<% for(let i = 0; i < posts.length; i++){    %>
 							<%if (posts[i].shareFeed==="on") { %>
 									
@@ -133,10 +124,10 @@
 							  </section>
 							
 							  <!-- <button id="delete_<%=posts[i]._id%>" class='deletePic' data-id="<%= posts[i]._id%>">DELETE</button> -->
-							  <!-- <a href="/profile/fits/<%= posts[i]._id%>  "
+							  <a href="/profile/fits/<%= posts[i]._id%>  "
 								>
 								Get Colors
-							  </a> -->
+							  </a>
 								<!-- <div data-id="<%= posts[i]._id%>"></div> -->
 							</div>
 							<% } %>	
