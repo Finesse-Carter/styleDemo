@@ -30,7 +30,7 @@ classIfLiked: ""
                 method: 'put',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({
-            likes: 1,
+            likes:1,
             posterId: uId,
             classIfLiked: "liked"
                 })

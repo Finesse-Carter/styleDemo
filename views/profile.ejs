@@ -121,7 +121,9 @@
                 <a href="<%= posts[i].imgUrl%>" data-color="<%= posts[i].imgUrl%>"
                   class="photography-entry img image-popup d-flex justify-content-center align-items-center"
                   style="background-image: url(<%= posts[i].imgUrl%>);">
-                  <div class="overlay"></div>
+                  <div class="overlay">
+                    
+                  </div>
 
                 </a>
                 <!-- drop colors for loop     when we click on the pic we are only gett -->
@@ -166,11 +168,13 @@
             </div>
           </div>
       </div>
-      </footer>
     </div><!-- END COLORLIB-MAIN -->
   </div><!-- END COLORLIB-PAGE -->
-
+  
   <!-- loader -->
+    <footer class="ftco-footer ftco-bg-dark ftco-section">
+  
+    </footer>
   <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
       <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
       <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10"
@@ -200,6 +204,7 @@
 
   <script type="text/javascript" src="node_modules\chromatism\dist\chromatism.cjs.js"></script>
   <script type="text/javascript" src="path-to-files/dist/chromatism.js"></script>
+  <script type="text/javascript" src="~/node_modules/chromatism/dist/chromatism.umd.js"></script>
 
   <script src="color.js"></script>
 </body>

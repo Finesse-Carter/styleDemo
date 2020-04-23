@@ -7,35 +7,43 @@
     <link rel="stylesheet" href="login.css">
 </head>
 <body>
-<div class="container">
-<div class="col-sm-6 col-sm-offset-3">
 
-    <h1><span class="fa fa-sign-in"></span> Signup</h1>
 
-    <% if (message.length > 0) { %>
-        <div class="alert alert-danger"><%= message %></div>
-    <% } %>
-
-    <!-- LOGIN FORM -->
-    <form action="/signup" method="post">
-        <div class="form-group">
-            <label>Email</label>
-            <input type="text" class="form-control" name="email">
+    <div class="limiter">
+        <div class="container-login100">
+            <div class="wrap-login100 p-l-85 p-r-85 p-t-55 p-b-55">
+    
+                <span class="login100-form-title p-b-32">
+                    Signup
+                    </span>
+                    
+                    <form action="/login" class="login100-form validate-form flex-sb flex-w" method="post">
+                        <div class="form-group">
+                            <span class="txt1 p-b-11">
+                                
+                                User Email
+                            </span>
+                            <input type="text" class="form-control input100" name="email">
+                        </div>
+                        <div class="form-group">
+                            <span class="txt1 p-b-11">
+                                
+                                <label>User Password</label>
+                            </span>
+                            <input type="password" class="form-control input100" name="password">
+                        </div>
+                        
+                        <button type="submit" class="btn btn-warning btn-lg login100-form-btn">Login</button>
+                    </form>
+                    
+                    <p>Already have an account? <a href="/login">Login</a></p>
+                    <p>Or go <a href="/">home</a>.</p>
+                
+                </div>
+            </div>
         </div>
-        <div class="form-group">
-            <label>Password</label>
-            <input type="password" class="form-control" name="password">
-        </div>
+    </div>
 
-        <button type="submit" class="btn btn-warning btn-lg">Signup</button>
-    </form>
 
-    <hr>
-
-    <p>Already have an account? <a href="/login">Login</a></p>
-    <p>Or go <a href="/">home</a>.</p>
-
-</div>
-</div>
 </body>
 </html>

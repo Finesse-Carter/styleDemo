@@ -101,7 +101,7 @@ console.log(result,'this is fun');
       if (err) return console.log(err)
       console.log(result,"its raining");
 
-      res.render('fits.ejs', {
+      res.render('fits.ejs',{
         posts: result
       })
     })
