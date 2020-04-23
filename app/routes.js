@@ -164,7 +164,8 @@ console.log(result,'this is fun');
       colors: colorPalette,
       clothing: req.body.clothing,
       shareFeed: req.body.shareFeed,
-      title: req.body.title
+      title: req.body.title,
+      classIfLiked: ""
     },
     (err, result) => {
       if (err) return console.log(err)

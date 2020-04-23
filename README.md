@@ -8,12 +8,8 @@
 1. run `node server.js`
 2. Navigate to `localhost:7777`
 
-​
-<!-- ![](Screenshot.png)
-![](ScreenShot2.png)
-![alt text](profileScreenShot.png)
-![alt_text](homePageSreenShot.png) -->
-​
+## <img src="Screenshot1.png">
+## <img src="Screenshot2.png">
 ​
 ​
 ## Tech Used:

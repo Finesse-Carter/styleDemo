@@ -4,7 +4,8 @@
 	<title>Style Gallery</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
+	
+	
 
 	<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
 	
@@ -97,17 +98,17 @@
 							  <!-- drop colors for loop     when we click on the pic we are only gett -->
 							  <section>
 			  
-								<div class="showColors">
+								<!-- <div class="showColors"> -->
 								  <!-- primary color -->
-								</div>
-								<div class="showColors">
+								<!-- </div> -->
+								<!-- <div class="showColors"> -->
 								  <!-- palette color -->
-								  <ul class="dotList">
-									<li class="colorDot"
+								  <!-- <ul class="dotList"> -->
+									<!-- <li class="colorDot"
 									  style="background-color: rgb(<%= posts[i].color[0] %>,<%= posts[i].color[1] %>,<%= posts[i].color[2] %>);">
 									  <section class="dotList"></section>
 									</li>
-								  </ul>
+								  </ul> -->
 								  <!-- <ul class="dotList">
 			  
 									<% for(let a = 0; a < posts[i].colors.length; a++){    %>
@@ -120,15 +121,25 @@
 			  
 			  
 								  </ul> -->
-								</div>
+								<!-- </div> -->
 							  </section>
 							
 							  <!-- <button id="delete_<%=posts[i]._id%>" class='deletePic' data-id="<%= posts[i]._id%>">DELETE</button> -->
-							  <a href="/profile/fits/<%= posts[i]._id%>  "
+							  <!-- <a href="/profile/fits/<%= posts[i]._id%>  "
 								>
 								Get Colors
-							  </a>
+							  </a> -->
 								<!-- <div data-id="<%= posts[i]._id%>"></div> -->
+<section>
+	
+
+<i data-id="<%= posts[i]._id%>" class="far fa-heart addLikes <%= posts[i].classIfLiked%>"></i>
+
+<i class="far fa-comment addCommets" 
+	></i>
+	
+</section>
+
 							</div>
 							<% } %>	
 							<% } %>
@@ -210,6 +221,8 @@
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
   <script src="js/google-map.js"></script>
   <script src="js/main.js"></script>
-    
+<script src="gallery.js"></script>
+  <script src="https://kit.fontawesome.com/50228578c2.js" crossorigin="anonymous"></script>
+
   </body>
 </html>

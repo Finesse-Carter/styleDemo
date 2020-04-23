@@ -109,6 +109,7 @@
           </div>
         </div>
       </aside> <!-- END COLORLIB-ASIDE -->
+
       <div id="colorlib-main">
         <section class="ftco-section-2">
           <div class="photograhy">
@@ -132,31 +133,32 @@
                   <div class="showColors">
                     <!-- palette color -->
                     <ul class="dotList">
-                      <li class="colorDot"
+                      <li class="colorDot far fa-circle"
                         style="background-color: rgb(<%= posts[i].color[0] %>,<%= posts[i].color[1] %>,<%= posts[i].color[2] %>);">
-                        <section class="dotList"></section>
+                        
+                      
                       </li>
                     </ul>
                     <ul class="dotList">
 
                       <% for(let a = 0; a < posts[i].colors.length; a++){    %>
-                      <li class="colorDot"
-                        style="background-color: rgb(<%= posts[i].colors[a][0] %>,<%= posts[i].colors[a][1] %>,<%= posts[i].colors[a][2] %>);">
-                        x
+                      <li class="colorDot far fa-circle"  
+                     style="background-color: rgb(<%= posts[i].colors[a][0] %>,<%= posts[i].colors[a][1] %>,<%= posts[i].colors[a][2] %>);">
+                        
                       </li>
 
                       <% } %>
-
 
                     </ul>
                   </div>
                 </section>
                 <span class="tag"><%= posts[i].likes %></span>
                 <span><i class="fa fa-heart" aria-hidden="true"></i></span>
-                <button id="delete_<%=posts[i]._id%>" class='deletePic' data-id="<%= posts[i]._id%>">DELETE</button>
+                <!-- <button id="delete_<%=posts[i]._id%>" class='deletePic' data-id="<%= posts[i]._id%>">DELETE</button> -->
+                <i class="deletePic far fa-trash-alt" id="delete_<%=posts[i]._id%>" data-id="<%= posts[i]._id%>"></i>
                 <a href="/profile/fits/<%= posts[i]._id%>  "
                   >
-                  Get Colors
+                  <i class="fas fa-swatchbook"></i>
                 </a>
                   <div data-id="<%= posts[i]._id%>"></div>
               </div>
@@ -193,6 +195,8 @@
   <!-- <script src="js/google-map.js"></script> -->
   <script src="js/main.js"></script>
   <script src="main.js"></script>
+
+  <script src="https://kit.fontawesome.com/50228578c2.js" crossorigin="anonymous"></script>
 
   <script type="text/javascript" src="node_modules\chromatism\dist\chromatism.cjs.js"></script>
   <script type="text/javascript" src="path-to-files/dist/chromatism.js"></script>

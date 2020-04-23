@@ -23,3 +23,6 @@ body {
   line-height: 1.4;
   color: aliceblue;
 }
+.liked{
+  background-color: red;
+}
