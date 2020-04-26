@@ -1,6 +1,6 @@
 module.exports = function(app, passport, db, multer, ObjectId) {
   var ColorThief = require('color-thief');
-  var chromatism = require('chromatism');
+var color = require('../public/color.js')
   // Image Upload Code =========================================================================
   // Make a Var for the storing of imgs => multer.(multer Method?)
   var storage = multer.diskStorage({
@@ -39,19 +39,19 @@ console.log(result,'this is fun');
     }
 
   });
-  app.get('/blog', function(req, res) {
+  app.get('/blog',isLoggedIn, function(req, res) {
     res.render('blog.ejs');
   });
-  app.get('/single', function(req, res) {
+  app.get('/single', isLoggedIn, function(req, res) {
     res.render('single.ejs');
   });
-  app.get('/contact', function(req, res) {
+  app.get('/contact',isLoggedIn, function(req, res) {
     res.render('contact.ejs');
   });
-  app.get('/about', function(req, res) {
+  app.get('/about', isLoggedIn, function(req, res) {
     res.render('about.ejs');
   });
-  app.get('/single', function(req, res) {
+  app.get('/single',isLoggedIn, function(req, res) {
     res.render('single.ejs');
   });
 
@@ -94,16 +94,29 @@ console.log(result,'this is fun');
   });
 
 
-  app.get('/profile/fits/:outFit', function(req, res) {
-    console.log(req.params.outFit);
-    var uId = ObjectId(req.params.outFit)
-    db.collection('posts').find({"_id": uId}).toArray((err, result) => {
-      if (err) return console.log(err)
-      console.log(result,"its raining");
+  app.get('/profile/fits/:outFit', isLoggedIn, function(req, res) {
 
-      res.render('fits.ejs',{
-        posts: result
+    let uId = ObjectId(req.session.passport.user);
+    var outFitId = ObjectId(req.params.outFit);
+
+
+    db.collection('posts').findOne({"_id": outFitId}, (err1, targeOutFit) => {
+      if (err1) return console.log(err1)
+      // console.log(targeOutFit, 'this is matching outFits');
+      let newColorArray = targeOutFit.colors
+// console.log(newColorArray,' neww color ar');
+
+db.collection('posts').find({"posterId": uId}).toArray((err, allOutFits) => {
+        if (err) return console.log(err)
+        // console.log(allOutFits,"its not raining");
+          // this is chromatism
+        let matchingOutFits = color.match(newColorArray,allOutFits);
+        res.render('fits.ejs',{
+          target: targeOutFit,
+          posts: matchingOutFits
+
       })
+    })
     })
 });
 
@@ -134,7 +147,7 @@ console.log(result,'this is fun');
   });
 
   // INDIVIDUAL POST PAGE =========================
-  app.get('/post/:zebra', function(req, res) {  //  /:zebra = query param
+  app.get('/post/:zebra', isLoggedIn,  function(req, res) {  //  /:zebra = query param
     let postId = ObjectId(req.params.zebra)   // postId = the queryParam unique number
     console.log(postId);
     db.collection('posts').find({_id: postId}).toArray((err, result) => {
@@ -150,8 +163,40 @@ console.log(result,'this is fun');
     let uId = ObjectId(req.session.passport.user) // uId === the individual
     var colorThief = new ColorThief();
     let primeColor = colorThief.getColor(req.file.path);
+
+    let primeColorObj = {}
+    primeColor.forEach((element,index)=> {
+      if(index===0){
+        primeColorObj.r=element
+      }else if(index===1){
+        primeColorObj.g=element
+      }else{
+        primeColorObj.b=element
+      }
+
+    });
     let colorPalette = colorThief.getPalette( req.file.path, 8);
-//+++++++++++++
+    let newColorPalette = colorPalette
+    let colorRGBPalette =[]
+
+    newColorPalette.forEach(element => {
+      // { r:255, g: 200, b: 55 }
+      let colorContainer = {}
+      let colorMatches =element.map((element,index)=>{
+        if(index===0){
+          colorContainer.r=element
+        }else if(index===1){
+    colorContainer.g=element
+        }else{
+          colorContainer.b=element
+        }
+      })
+
+      colorRGBPalette.push(colorContainer);
+
+    });
+    colorRGBPalette.push(primeColorObj);
+    //+++++++++++++
 
 //+++++++++++++++
     db.collection('posts').save({
@@ -160,8 +205,8 @@ console.log(result,'this is fun');
       likes: 0,
       imgPath: req.file.path,
       imgUrl: "images/uploads/"+ req.file.filename,
-      color: primeColor,
-      colors: colorPalette,
+      color: primeColorObj,
+      colors: colorRGBPalette,
       clothing: req.body.clothing,
       shareFeed: req.body.shareFeed,
       title: req.body.title,

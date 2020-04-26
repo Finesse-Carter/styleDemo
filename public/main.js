@@ -7,7 +7,7 @@ var thumbUp = document.getElementsByClassName("fa-thumbs-up");
 var trash = document.getElementsByClassName("fa-trash");
 var thumbDown = document.getElementsByClassName("fa-thumbs-down")
 var deletePic = document.getElementsByClassName('deletePic')
-var matchPic = document.getElementsByClassName('matchPic')
+
 Array.from(thumbUp).forEach(function(element) {
       element.addEventListener('click', function(){
         const name = this.parentNode.parentNode.childNodes[1].innerText

@@ -13,19 +13,19 @@
   <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700" rel="stylesheet">
 
-  <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
-  <link rel="stylesheet" href="css/animate.css">
+  <link rel="stylesheet" href="/css/open-iconic-bootstrap.min.css">
+  <link rel="stylesheet" href="/css/animate.css">
 
-  <link rel="stylesheet" href="css/owl.carousel.min.css">
-  <link rel="stylesheet" href="css/owl.theme.default.min.css">
-  <link rel="stylesheet" href="css/magnific-popup.css">
+  <link rel="stylesheet" href="/css/owl.carousel.min.css">
+  <link rel="stylesheet" href="/css/owl.theme.default.min.css">
+  <link rel="stylesheet" href="/css/magnific-popup.css">
 
-  <link rel="stylesheet" href="css/aos.css">
+  <link rel="stylesheet" href="/css/aos.css">
 
-  <link rel="stylesheet" href="css/ionicons.min.css">
+  <link rel="stylesheet" href="/css/ionicons.min.css">
 
-  <link rel="stylesheet" href="css/bootstrap-datepicker.css">
-  <link rel="stylesheet" href="css/jquery.timepicker.css">
+  <link rel="stylesheet" href="/css/bootstrap-datepicker.css">
+  <link rel="stylesheet" href="/css/jquery.timepicker.css">
 
 
   <link rel="stylesheet" href="css/flaticon.css">
@@ -62,13 +62,13 @@
           <input type="radio" id="jacket" name="clothing" value="Jacket">
           <label for="jacket">Jackets</label>
           <input type="radio" id="accessories" name="clothing" value="Accessories">
-  <label for="accessories">Accessories</label>
-  <input type="radio" id="footwear" name="clothing" value="Footwear">
-  <label for="footwear">Footwear</label>
-  <input type="radio" id="sweater" name="clothing" value="Sweater">
-  <label for="sweater">Sweaters</label>
-  <input type="checkbox" id="shareFeed" name="shareFeed">
-  <label for="shareFeed">Share to feed</label>
+          <label for="accessories">Accessories</label>
+          <input type="radio" id="footwear" name="clothing" value="Footwear">
+          <label for="footwear">Footwear</label>
+          <input type="radio" id="sweater" name="clothing" value="Sweater">
+          <label for="sweater">Sweaters</label>
+          <input type="checkbox" id="shareFeed" name="shareFeed">
+          <label for="shareFeed">Share to feed</label>
           <input type="file" name="file-to-upload">
           <input type="submit" value="Upload">
         </form>
@@ -88,7 +88,7 @@
           <ul>
             <li class="colorlib-active"><a href="/profile">Home</a></li>
             <li><a href="/gallery">Gallery</a></li>
-            <li><a href="/fits">Outfits</a></li>
+            <!-- <li><a href="/fits">Outfits</a></li> -->
             <!-- <li><a href="/about">About</a></li> -->
             <!-- <li><a href="/blog">Blog</a></li> -->
             <!-- <li><a href="/contact">Contact</a></li> -->
@@ -101,112 +101,111 @@
             <ul class="d-flex align-items-center">
               <!-- <li class="d-flex align-items-center jusitfy-content-center"><a href="#"><i class="icon-facebook"></i></a></li> -->
               <li class="d-flex align-items-center jusitfy-content-center"><a
-                  href="https://twitter.com/CarterFinesse"><i class="icon-twitter"></i></a></li>
-              <!-- <li class="d-flex align-items-center jusitfy-content-center"><a href="#"><i class="icon-instagram"></i></a></li> -->
-              <li class="d-flex align-items-center jusitfy-content-center"><a
+                href="https://twitter.com/CarterFinesse"><i class="icon-twitter"></i></a></li>
+                <!-- <li class="d-flex align-items-center jusitfy-content-center"><a href="#"><i class="icon-instagram"></i></a></li> -->
+                <li class="d-flex align-items-center jusitfy-content-center"><a
                   href="https://www.linkedin.com/in/finesse-carter-dev/"><i class="icon-linkedin"></i></a></li>
-            </ul>
-          </div>
-        </div>
-      </aside> <!-- END COLORLIB-ASIDE -->
-
-      <div id="colorlib-main">
-        <section class="ftco-section-2">
-          <div class="photograhy">
-            <div class="row no-gutters">
-              <% for(let i = 0; i < posts.length; i++){    %>
-              <div class="col-md-4 ftco-animate">
-                <h3><%= posts[i].caption %></h3>
-
-                <a href="<%= posts[i].imgUrl%>" data-color="<%= posts[i].imgUrl%>"
-                  class="photography-entry img image-popup d-flex justify-content-center align-items-center"
-                  style="background-image: url(<%= posts[i].imgUrl%>);">
-                  <div class="overlay">
-                    
-                  </div>
-
-                </a>
-                <!-- drop colors for loop     when we click on the pic we are only gett -->
-                <section>
-
-                  <div class="showColors">
-                    <!-- primary color -->
-                  </div>
-                  <div class="showColors">
-                    <!-- palette color -->
-                    <ul class="dotList">
-                      <li class="colorDot far fa-circle"
-                        style="background-color: rgb(<%= posts[i].color[0] %>,<%= posts[i].color[1] %>,<%= posts[i].color[2] %>);">
-                        
-                      
-                      </li>
-                    </ul>
-                    <ul class="dotList">
-
-                      <% for(let a = 0; a < posts[i].colors.length; a++){    %>
-                      <li class="colorDot far fa-circle"  
-                     style="background-color: rgb(<%= posts[i].colors[a][0] %>,<%= posts[i].colors[a][1] %>,<%= posts[i].colors[a][2] %>);">
-                        
-                      </li>
-
-                      <% } %>
-
-                    </ul>
-                  </div>
-                </section>
-                <span class="tag"><%= posts[i].likes %></span>
-                <span><i class="fa fa-heart" aria-hidden="true"></i></span>
-                <!-- <button id="delete_<%=posts[i]._id%>" class='deletePic' data-id="<%= posts[i]._id%>">DELETE</button> -->
-                <i class="deletePic far fa-trash-alt" id="delete_<%=posts[i]._id%>" data-id="<%= posts[i]._id%>"></i>
-                <a href="/profile/fits/<%= posts[i]._id%>  "
-                  >
-                  <i class="fas fa-swatchbook"></i>
-                </a>
-                  <div data-id="<%= posts[i]._id%>"></div>
+                </ul>
               </div>
-              <% } %>
             </div>
-          </div>
-      </div>
-    </div><!-- END COLORLIB-MAIN -->
-  </div><!-- END COLORLIB-PAGE -->
-  
-  <!-- loader -->
-    <footer class="ftco-footer ftco-bg-dark ftco-section">
-  
-    </footer>
-  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
-      <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
-      <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10"
-        stroke="#F96D00" /></svg></div>
+          </aside> <!-- END COLORLIB-ASIDE -->
+
+          <div id="colorlib-main">
+            <section class="ftco-section-2">
+              <div class="photograhy">
+                <div class="row no-gutters">
+                  <% for(let i = 0; i < posts.length; i++){    %>
+                    <div class="col-md-4 ftco-animate">
+                      <h3><%= posts[i].caption %></h3>
+
+                      <a href="<%= posts[i].imgUrl%>" data-color="<%= posts[i].imgUrl%>"
+                        class="photography-entry img image-popup d-flex justify-content-center align-items-center"
+                        style="background-image: url(<%= posts[i].imgUrl%>);">
+                        <div class="overlay">
+
+                        </div>
+
+                      </a>
+                      <!-- drop colors for loop     when we click on the pic we are only gett -->
+                      <section>
+
+                        <div class="showColors">
+                          <!-- primary color -->
+                        </div>
+                        <div class="showColors">
+                          <!-- palette color -->
+                          <ul class="dotList">
+                            <li class="colorDot far fa-circle"
+                            style="background-color: rgb(<%= posts[i].color.r %>,<%= posts[i].color.g %>,<%= posts[i].color.b %>);">
 
 
-  <script src="js/jquery.min.js"></script>
-  <script src="js/jquery-migrate-3.0.1.min.js"></script>
-  <script src="js/popper.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/jquery.easing.1.3.js"></script>
-  <script src="js/jquery.waypoints.min.js"></script>
-  <script src="js/jquery.stellar.min.js"></script>
-  <script src="js/owl.carousel.min.js"></script>
-  <script src="js/jquery.magnific-popup.min.js"></script>
-  <script src="js/aos.js"></script>
-  <script src="js/jquery.animateNumber.min.js"></script>
-  <script src="js/bootstrap-datepicker.js"></script>
-  <!-- <script src="js/jquery.timepicker.min.js"></script> -->
-  <script src="js/scrollax.min.js"></script>
-  <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script> -->
-  <!-- <script src="js/google-map.js"></script> -->
-  <script src="js/main.js"></script>
-  <script src="main.js"></script>
+                          </li>
+                        </ul>
+                        <ul class="dotList">
 
-  <script src="https://kit.fontawesome.com/50228578c2.js" crossorigin="anonymous"></script>
+                          <% for(let a = 0; a < posts[i].colors.length; a++){    %>
+                            <li class="colorDot far fa-circle"
+                            style="background-color: rgb(<%= posts[i].colors[a].r %>,<%= posts[i].colors[a].g %>,<%= posts[i].colors[a].b %>);">
 
-  <script type="text/javascript" src="node_modules\chromatism\dist\chromatism.cjs.js"></script>
-  <script type="text/javascript" src="path-to-files/dist/chromatism.js"></script>
-  <script type="text/javascript" src="~/node_modules/chromatism/dist/chromatism.umd.js"></script>
+                          </li>
 
-  <script src="color.js"></script>
-</body>
+                          <% } %>
 
-</html>
+                        </ul>
+                      </div>
+                    </section>
+                    <span class="tag"><%= posts[i].likes %></span>
+                    <span><i class="fa fa-heart" aria-hidden="true"></i></span>
+                    <!-- <button id="delete_<%=posts[i]._id%>" class='deletePic' data-id="<%= posts[i]._id%>">DELETE</button> -->
+                    <i class="deletePic far fa-trash-alt" id="delete_<%=posts[i]._id%>" data-id="<%= posts[i]._id%>"></i>
+                    <a href="/profile/fits/<%= posts[i]._id%>  " class="matchPic">
+                      <i class="fas fa-swatchbook"></i>
+                    </a>
+                    <div data-id="<%= posts[i]._id%>"></div>
+                  </div>
+                  <% } %>
+                </div>
+              </div>
+            </div>
+          </div><!-- END COLORLIB-MAIN -->
+        </div><!-- END COLORLIB-PAGE -->
+
+        <!-- loader -->
+        <footer class="ftco-footer ftco-bg-dark ftco-section">
+
+        </footer>
+        <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
+          <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
+          <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10"
+          stroke="#F96D00" /></svg></div>
+
+
+          <script src="/js/jquery.min.js"></script>
+          <script src="/js/jquery-migrate-3.0.1.min.js"></script>
+          <script src="/js/popper.min.js"></script>
+          <script src="/js/bootstrap.min.js"></script>
+          <script src="/js/jquery.easing.1.3.js"></script>
+          <script src="/js/jquery.waypoints.min.js"></script>
+          <script src="/js/jquery.stellar.min.js"></script>
+          <script src="/js/owl.carousel.min.js"></script>
+          <script src="/js/jquery.magnific-popup.min.js"></script>
+          <script src="/js/aos.js"></script>
+          <script src="/js/jquery.animateNumber.min.js"></script>
+          <script src="/js/bootstrap-datepicker.js"></script>
+          <!-- <script src="js/jquery.timepicker.min.js"></script> -->
+          <script src="/js/scrollax.min.js"></script>
+          <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script> -->
+          <!-- <script src="js/google-map.js"></script> -->
+          <script src="/js/main.js"></script>
+          <script src="main.js"></script>
+
+          <script src="https://kit.fontawesome.com/50228578c2.js" crossorigin="anonymous"></script>
+
+
+          <script type="text/javascript" src="js/chromatism.js"></script>
+
+
+          <script src="color.js"></script>
+        </body>
+
+        </html>
