@@ -135,28 +135,9 @@ db.collection('posts').find({"posterId": uId}).toArray((err, allOutFits) => {
     })
   });
 
-  // FEED PAGE =========================
-  app.get('/feed', isLoggedIn, function(req, res) {
-    db.collection('posts').find().toArray((err, result) => {  //Find all posts then turn to array
-      if (err) return console.log(err)
-      res.render('feed.ejs', {   //render /feed
-        user : req.user,
-        posts: result
-      })
-    })
-  });
 
   // INDIVIDUAL POST PAGE =========================
-  app.get('/post/:zebra', isLoggedIn,  function(req, res) {  //  /:zebra = query param
-    let postId = ObjectId(req.params.zebra)   // postId = the queryParam unique number
-    console.log(postId);
-    db.collection('posts').find({_id: postId}).toArray((err, result) => {
-      if (err) return console.log(err)
-      res.render('post.ejs', {
-        posts: result
-      })
-    })
-  });
+
 
   //Create Post =========================================================================
   app.post('/qpPost', isLoggedIn, upload.single('file-to-upload'), (req, res, next) => {  //one picture to post   //next????

@@ -1,27 +1,9 @@
-// import { Collection } from "mongoose";
-// var chromatism = require('chromatism');
-// var colorThief = new ColorThief();
-
 var ham = document.getElementsByClassName('fa-plus')
 var thumbUp = document.getElementsByClassName("fa-thumbs-up");
 var trash = document.getElementsByClassName("fa-trash");
 var thumbDown = document.getElementsByClassName("fa-thumbs-down")
 var deletePic = document.getElementsByClassName('deletePic')
 
-// Array.prototype.forEach.apply( ham, [
-//   function(trigger) {
-//     trigger.addEventListener("click", function(element) {
-//       if (element) {
-        
-//       } // this function will be defined in a later step
-//     });
-//   }
-// ]);
-
-
-
-
-})
 function nav() {
   document.querySelector('.side').style.display = "block";
 }
