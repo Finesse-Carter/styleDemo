@@ -4,6 +4,16 @@
  * Copyright 2011-2018 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
+ .side{
+   display: none;
+ }
+ .fa-plus{
+  float: left;
+  font-size: 38px;
+  display: block;
+  /* width: 94%; */
+  margin: 2%;
+}
  .colorDot {
   display: inline-block;
   background: #dddddd;

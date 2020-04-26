@@ -38,12 +38,16 @@ dance:
 
   for (let i = 0; i < rgb.length; i++) {
     let colors = rgb[i];
+console.log(colors.b + 40 > outfitColors.b && outfitColors.b - 40 < outfitColors.b,'blue check');
+console.log(colors.r + 40, 'outcolors',outfitColors.r,'outfits');
 
-    // console.log(colors,'colors recom' )
-    // console.log(outfitColors,'outfits to wear' )
-    let stuff =(colors.r + 20 > outfitColors.r && colors.r - 20 < outfitColors.r) 
+console.log(colors.r + 40 > outfitColors.r && colors.r - 40 < outfitColors.r,'red check');
+console.log(colors.g + 40 > outfitColors.g && colors.g - 40 < outfitColors.g,'green check');
+    console.log(colors,'colors recom' )
+    console.log(outfitColors,'outfits to wear' )
+    let stuff =(colors.r + 20 > outfitColors.r && colors.r - 20 < outfitColors.r&& colors.g + 20 > outfitColors.g && colors.g - 20 < outfitColors.g && colors.b + 20 > outfitColors.b && colors.b - 20 < outfitColors.b) 
     if(stuff){
-      // console.log("success");
+      console.log("success");
       
        result = true
        break dance
