@@ -94,6 +94,7 @@ console.log(result,'this is fun');
   });
 
 
+
   app.get('/profile/fits/:outFit', isLoggedIn, function(req, res) {
 
     let uId = ObjectId(req.session.passport.user);
