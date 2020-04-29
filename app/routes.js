@@ -74,48 +74,183 @@ console.log(result,'this is fun');
 
   // PROFILE SECTION =========================
   app.get('/profile', isLoggedIn, function(req, res) {
-    // console.log(req.user.local.email)
-    // console.log(chromatism);
+    
     let uId = ObjectId(req.session.passport.user)   //uId = unique id from passport
-    if(req.user.local.email){
-      db.collection('messages').find().toArray((err, result) => {
+    let images = [
+"public\\images\\defaultImgs\\49ba3dfa4616a73999f95fda0ae92c37.jpg",
+'public\\images\\defaultImgs\\94cb42de8ebbd882789e492f4f0de123.jpg',
+'public\\images\\defaultImgs\\affe9f210f21c69ac93d428be7c8b410.jpg',
+'public\\images\\defaultImgs\\Supreme-Is-Love-Denim-Work-Jacket-Tan.jpg',
+'public\\images\\defaultImgs\\Supreme-Nike-Leather-Anorak-Red.jpg'    
+]
 
-        db.collection('posts').find({'posterId': uId}).toArray((err, result) => {
+let names = [
+  "defaultImgs/49ba3dfa4616a73999f95fda0ae92c37.jpg",
+  'defaultImgs/94cb42de8ebbd882789e492f4f0de123.jpg',
+  'defaultImgs/affe9f210f21c69ac93d428be7c8b410.jpg',
+  'defaultImgs/Supreme-Is-Love-Denim-Work-Jacket-Tan.jpg',
+  'defaultImgs/Supreme-Nike-Leather-Anorak-Red.jpg'    
+  ]
 
-          if (err) return console.log(err)
-          res.render('profile.ejs', {
-            user: req.user,
-            messages: result,
-            posts: result   //post = result from DB
-          })
-        })
+let caption;
+let clothing;
+let title;
+
+images.forEach((image, index)=>{
+
+  var colorThief = new ColorThief();
+    let primeColor = colorThief.getColor(image);
+
+    let primeColorObj = {}
+    primeColor.forEach((element,index)=> {
+      if(index===0){
+        primeColorObj.r=element
+      }else if(index===1){
+        primeColorObj.g=element
+      }else{
+        primeColorObj.b=element
+      }
+
+    });
+
+    let colorPalette = colorThief.getPalette( image, 8);
+    let newColorPalette = colorPalette;
+    let colorRGBPalette =[]
+
+    newColorPalette.forEach(element => {
+      // { r:255, g: 200, b: 55 }
+      let colorContainer = {}
+      let colorMatches =element.map((element,index)=>{
+        if(index===0){
+          colorContainer.r=element
+        }else if(index===1){
+    colorContainer.g=element
+        }else{
+          colorContainer.b=element
+        }
       })
+
+      colorRGBPalette.push(colorContainer);
+
+    });
+    colorRGBPalette.push(primeColorObj);
+
+let newResultArray;
+
+
+
+ db.collection('posts').find({'posterId': uId}).toArray((err, result) => {
+
+
+if(result.length === 0){
+
+  newResultArray = result.filter((post) => check(post.imgPath))
+
+  console.log(newResultArray, "first result")
+
+  function check(post){
+console.log(post, 'post post post');
+
+    let result;
+
+    var str = post; 
+    var n = str.search("defaultImgs");
+
+
+  if (n > 0){
+    result = true;
+  } else if (n === 0){
+    result = false;
+  }else {
+    result = false;
+  }
+
+    return result
+
+  }
+
+  if (newResultArray.length === 5) {
+console.log('no need to create')
+  
+  } else {
+
+    ('create')
+
+    if(images[index]=== 0){
+
+      clothing = 'test'
+      title = 'test'
+      caption = 'test'
+
+    } else if (images[index]=== 1){
+
+      clothing = 'test'
+      title = 'test'
+      caption = 'test'
+
     }
+    
+    db.collection('posts').save({
+      posterId: uId,
+      caption: caption,
+      likes: 0,
+      imgPath: images[index],
+      imgUrl: "images/" + names[index],
+      color: primeColorObj,
+      colors: colorRGBPalette,
+      clothing: clothing,
+      shareFeed: req.body.shareFeed,
+      title: title,
+      classIfLiked: "" 
+})
+    
+  }
+
+
+
+} else {
+
+/// do nothing
+    }
+
+    })
+    console.log(newResultArray, "filtered results")
+})
+if(req.user.local.email){
+console.log(req.user.local.email, 'hey i am here');
+
+    db.collection('posts').find({'posterId': uId}).toArray((err, result) => {
+
+      if (err) return console.log(err)
+      res.render('profile.ejs', {
+        user: req.user,
+        messages: result,
+        posts: result   //post = result from DB
+      })
+    })
+}
   });
 
 
 
   app.get('/profile/fits/:outFit', isLoggedIn, function(req, res) {
-
     let uId = ObjectId(req.session.passport.user);
     var outFitId = ObjectId(req.params.outFit);
-
-
     db.collection('posts').findOne({"_id": outFitId}, (err1, targeOutFit) => {
       if (err1) return console.log(err1)
       // console.log(targeOutFit, 'this is matching outFits');
       let newColorArray = targeOutFit.colors
 // console.log(newColorArray,' neww color ar');
-
 db.collection('posts').find({"posterId": uId}).toArray((err, allOutFits) => {
         if (err) return console.log(err)
-        // console.log(allOutFits,"its not raining");
+
+        let filteredOutTargetOutfit = allOutFits.filter(outfits => outfits._id.toString() !== outFitId.toString() )
+        
           // this is chromatism
-        let matchingOutFits = color.match(newColorArray,allOutFits);
+        let matchingOutFits = color.match(newColorArray, filteredOutTargetOutfit);
         res.render('fits.ejs',{
           target: targeOutFit,
           posts: matchingOutFits
-
       })
     })
     })
@@ -141,7 +276,10 @@ db.collection('posts').find({"posterId": uId}).toArray((err, allOutFits) => {
 
 
   //Create Post =========================================================================
-  app.post('/qpPost', isLoggedIn, upload.single('file-to-upload'), (req, res, next) => {  //one picture to post   //next????
+  app.post('/qpPost', isLoggedIn, upload.single('file-to-upload'), (req, res, next) => { 
+
+    console.log(req.file.path, 'filepath')
+    // app.post('/images/uploads', isLoggedIn,  upload.array('file-to-upload', 12), (req, res, next) => {  //one picture to post   //next????
     let uId = ObjectId(req.session.passport.user) // uId === the individual
     var colorThief = new ColorThief();
     let primeColor = colorThief.getColor(req.file.path);
@@ -179,12 +317,13 @@ db.collection('posts').find({"posterId": uId}).toArray((err, allOutFits) => {
     });
     colorRGBPalette.push(primeColorObj);
     //+++++++++++++
-
+   
 //+++++++++++++++
     db.collection('posts').save({
       posterId: uId,
       caption: req.body.caption,
       likes: 0,
+      liked:'',
       imgPath: req.file.path,
       imgUrl: "images/uploads/"+ req.file.filename,
       color: primeColorObj,
@@ -196,7 +335,7 @@ db.collection('posts').find({"posterId": uId}).toArray((err, allOutFits) => {
     },
     (err, result) => {
       if (err) return console.log(err)
-      console.log('saved to database')
+      
       res.redirect('/profile')
     })
   });
@@ -206,6 +345,50 @@ db.collection('posts').find({"posterId": uId}).toArray((err, allOutFits) => {
     req.logout();
     res.redirect('/');
   });
+
+// likes===========================================================================
+
+app.put('/profile', (req, res) => {
+
+  db.collection('posts')
+  .findOneAndUpdate({_id: ObjectId(req.body._id)}, {
+  
+    $set: {
+      liked: req.body.liked
+    
+  }, 
+    $inc: {
+      likes: req.body.likes
+    }
+  }, {
+    sort: {_id: -1},
+    upsert: true
+  }, (err, result) => {
+    if (err) return res.send(err)
+    res.send(result)
+  })
+})
+
+app.put('/gallery', (req, res) => {
+
+  db.collection('posts')
+  .findOneAndUpdate({_id: ObjectId(req.body._id)}, {
+  
+    $set: {
+      liked: req.body.liked
+    
+  }, 
+    $inc: {
+      likes: req.body.likes
+    }
+  }, {
+    sort: {_id: -1},
+    upsert: true
+  }, (err, result) => {
+    if (err) return res.send(err)
+    res.send(result)
+  })
+})
 
   // message board routes ===============================================================
 

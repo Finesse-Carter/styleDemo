@@ -7679,11 +7679,12 @@ h1, h2, h3, h4, h5,
       color: #b3b3b3;
       border-bottom: 2px solid #b3b3b3; }
 
-.photography-entry {
-  height: 280px;
-  display: block;
-  z-index: 0;
-  position: relative; }
+      .photography-entry {
+        height: 300px;
+        display: block;
+        z-index: 0;
+        position: relative;
+    }
   .photography-entry .overlay {
     position: absolute;
     top: 0;
