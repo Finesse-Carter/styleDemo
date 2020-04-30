@@ -219,15 +219,16 @@ console.log('no need to create')
 if(req.user.local.email){
 console.log(req.user.local.email, 'hey i am here');
 
-    db.collection('posts').find({'posterId': uId}).toArray((err, result) => {
+setTimeout(function(){ db.collection('posts').find({'posterId': uId}).sort({'_id':-1}).toArray((err, result) => {
 
-      if (err) return console.log(err)
-      res.render('profile.ejs', {
-        user: req.user,
-        messages: result,
-        posts: result   //post = result from DB
-      })
-    })
+  if (err) return console.log(err)
+  res.render('profile.ejs', {
+    user: req.user,
+    messages: result,
+    posts: result   //post = result from DB
+  })
+}) }, 3000);
+  
 }
   });
 

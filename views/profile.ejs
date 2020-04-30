@@ -125,13 +125,27 @@
                       <a href="<%= posts[i].imgUrl%>" data-color="<%= posts[i].imgUrl%>"
                         class="photography-entry img image-popup d-flex justify-content-center align-items-center"
                         style="background-image: url(<%= posts[i].imgUrl%>);">
+                        <div class="overlay"></div>
+                        <div class="text text-center">
+                          <h3><%= posts[i].title %></h3>
+                           <span class="tag"  data-likes="<%= posts[i].likes %>"></span><%= posts[i].likes %></span>
+                          <span><i class="fa fa-heart" aria-hidden="true"></i></span>
+                          <h3 class="tag"><%= posts[i].caption %></h3>
+                          <!-- <h3>Work 01</h3>
+                          <span class="tag">Model</span> -->
+                        </div>
+                      </a>
+
+                      <!-- <a href="<%= posts[i].imgUrl%>" data-color="<%= posts[i].imgUrl%>"
+                        class="photography-entry img image-popup d-flex justify-content-center align-items-center"
+                        style="background-image: url(<%= posts[i].imgUrl%>);">
                         <div class="overlay">
                           <div class="text text-center">
                             <h3><%= posts[i].title %></h3>
                             <span class="tag"><%= posts[i].caption %></span>
                           </div>
                         </div>
-                        </a>
+                        </a> -->
                       <!-- drop colors for loop     when we click on the pic we are only gett -->
                       <section>
 
@@ -203,7 +217,7 @@
           <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script> -->
           <!-- <script src="js/google-map.js"></script> -->
           <script src="/js/main.js"></script>
-          <script src="main.js"></script>
+          <script src="/main.js"></script>
 
           <script src="https://kit.fontawesome.com/50228578c2.js" crossorigin="anonymous"></script>
 

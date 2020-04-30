@@ -99,10 +99,11 @@
                   <section>
 
 
-                    <i data-id="<%= posts[i]._id%>" class="far fa-heart addLikes <%= posts[i].classIfLiked%>"></i>
+                    <span class="tag likes <%= posts[i].liked%>" data-likes="<%= posts[i].likes%>"  data-id="<%= posts[i]._id%>"><%= posts[i].likes %><i class="fa fa-heart like" aria-hidden="true"></i></span>
 
-                    <i class="far fa-comment addCommets"
-                    ></i>
+
+                    <!-- <i class="far fa-comment addCommets"
+                    ></i> -->
 
                   </section>
 
@@ -145,7 +146,9 @@
       <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
       <script src="/js/google-map.js"></script>
       <script src="/js/main.js"></script>
-      <script src="gallery.js"></script>
+      <script src="/main.js"></script>
+
+      <!-- <script src="/gallery.js"></script> -->
       <script src="https://kit.fontawesome.com/50228578c2.js" crossorigin="anonymous"></script>
 
     </body>
