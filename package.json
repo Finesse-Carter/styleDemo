@@ -5,6 +5,7 @@
     "bcrypt-nodejs": "latest",
     "body-parser": "^1.18.3",
     "bson": "^4.0.4",
+    "canvas": "github:automattic/node-canvas",
     "chromatism": "^3.0.0",
     "color-thief": "^2.2.5",
     "connect-flash": "~0.1.1",
