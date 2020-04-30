@@ -244,8 +244,15 @@ console.log(req.user.local.email, 'hey i am here');
 db.collection('posts').find({"posterId": uId}).toArray((err, allOutFits) => {
         if (err) return console.log(err)
 
-        let filteredOutTargetOutfit = allOutFits.filter(outfits => outfits._id.toString() !== outFitId.toString() )
-        
+let myFilter = function(outFit) {
+  return(
+  (outFit._id.toString() !== outFitId.toString() ) && 
+  ((targeOutFit.clothing === null) || (targeOutFit.clothing !== outFit.clothing )))
+
+}
+let filteredOutTargetOutfit = allOutFits.filter(myFilter )
+        // let filteredOutTargetOutfit = allOutFits.filter(outfits => outfits._id.toString() !== outFitId.toString() )
+        //we are going to filter out the same clthing as the target unless the target is null
           // this is chromatism
         let matchingOutFits = color.match(newColorArray, filteredOutTargetOutfit);
         res.render('fits.ejs',{
