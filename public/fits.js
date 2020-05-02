@@ -1,1 +1,0 @@
-ham = document.getElementsByClassName('ham')

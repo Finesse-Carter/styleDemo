@@ -5,8 +5,7 @@
   <title>Style</title>
   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
-  <!-- <link rel="stylesheet" href="/fits.css"> -->
-
+ 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -36,68 +35,69 @@
 
 <body>
 
-	<div id="colorlib-page">
-		<a href="#" class="js-colorlib-nav-toggle colorlib-nav-toggle"><i></i></a>
-		<aside id="colorlib-aside" role="complementary" class="js-fullheight text-center">
+  <div id="colorlib-page">
+    <a href="#" class="js-colorlib-nav-toggle colorlib-nav-toggle"><i></i></a>
+    <aside id="colorlib-aside" role="complementary" class="js-fullheight text-center">
       <h1 id="colorlib-logo"><a href="/profile"><span class="flaticon-camera"></span>Style</a></h1>
-      			<nav id="colorlib-main-menu" role="navigation">
-              <ul>
-                <li class="colorlib-active"><a href="/profile">Home</a></li>
-                <li><a href="/gallery">Gallery</a></li>
-                <!-- <li><a href="/about">About</a></li> -->
-                <!-- <li><a href="/blog">Blog</a></li> -->
-                <!-- <li><a href="/contact">Contact</a></li> -->
-              </ul>
+      <nav id="colorlib-main-menu" role="navigation">
+        <ul>
+          <li class="colorlib-active"><a href="/profile">Home</a></li>
+          <li><a href="/gallery">Gallery</a></li>
+        </ul>
 
 
-			</nav>
+      </nav>
       <div class="colorlib-footer">
         <h3>Follow Us Here!</h3>
         <div class="d-flex justify-content-center">
           <ul class="d-flex align-items-center">
-            <!-- <li class="d-flex align-items-center jusitfy-content-center"><a href="#"><i class="icon-facebook"></i></a></li> -->
-            <li class="d-flex align-items-center jusitfy-content-center"><a href="https://twitter.com/CarterFinesse"><i class="icon-twitter"></i></a></li>
-            <!-- <li class="d-flex align-items-center jusitfy-content-center"><a href="#"><i class="icon-instagram"></i></a></li> -->
-            <li class="d-flex align-items-center jusitfy-content-center"><a href="https://www.linkedin.com/in/finesse-carter-dev/"><i class="icon-linkedin"></i></a></li>
+            <li class="d-flex align-items-center jusitfy-content-center"><a href="#"><i class="icon-facebook"></i></a>
+            </li>
+            <li class="d-flex align-items-center jusitfy-content-center"><a href="https://twitter.com/CarterFinesse"><i
+                  class="icon-twitter"></i></a></li>
+            <li class="d-flex align-items-center jusitfy-content-center"><a href="#"><i class="icon-instagram"></i></a>
+            </li>
+            <li class="d-flex align-items-center jusitfy-content-center"><a
+                href="https://www.linkedin.com/in/finesse-carter-dev/"><i class="icon-linkedin"></i></a></li>
           </ul>
         </div>
       </div>
 
-			</div>
-		</aside> <!-- END COLORLIB-ASIDE -->
-		<div id="colorlib-main">
-			<section class="ftco-section bg-light ftco-bread">
-				<div class="container">
+  </div>
+  </aside> <!-- END COLORLIB-ASIDE -->
+  <div id="colorlib-main">
+    <section class="ftco-section bg-light ftco-bread">
+      <div class="container">
 
-            <div class="page-header text-center">
-              <h1><span class="flaticon-camera"></span>Outfit Page</h1>
-              <a href="/logout" class="btn btn-default btn-sm">Logout</a>
-            </div>
-					<div class="row no-gutters slider-text align-items-center">
-	          <div class="col-md-9 ftco-animate">
-              <h1 class="select">Here is the picture you selected</h1>
-              <img style="max-height: 534px;" src="/<%= target.imgUrl%>" alt="">
-              <h2>Here is a list of <%= posts.length %> matching pictures</h2>
-            </div>
-	        </div>
-				</div>
-			</section>
-			<section class="ftco-section-2">
-				<div class="photograhy">
-					<div class="row no-gutters">
-            <% for(let i = 0; i < posts.length; i++){    %>
-						<div class="col-md-4 ftco-animate">
-							<a href="/<%= posts[i].imgUrl%>" data-color="<%= posts[i].imgUrl%>"
-                class="photography-entry img image-popup d-flex justify-content-center align-items-center"
-                style="background-image: url(/<%= posts[i].imgUrl%>);">
-								<div class="overlay"></div>
-								<div class="text text-center">
+        <div class="page-header text-center">
+          <h1><span class="flaticon-camera"></span>Outfit Page</h1>
+          <a href="/logout" class="btn btn-default btn-sm">Logout</a>
+        </div>
+        <div class="row no-gutters slider-text align-items-center">
+          <div class="col-md-9 ftco-animate">
+            <h1 class="select">Here is the picture you selected</h1>
+            <img style="max-height: 534px;" src="/<%= target.imgUrl%>" alt="">
+            <h2>Here is a list of <%= posts.length %> matching pictures</h2>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="ftco-section-2">
+      <div class="photograhy">
+        <div class="row no-gutters">
+          <% for(let i = 0; i < posts.length; i++){    %>
+          <div class="col-md-4 ftco-animate">
+            <a href="/<%= posts[i].imgUrl%>" data-color="<%= posts[i].imgUrl%>"
+              class="photography-entry img image-popup d-flex justify-content-center align-items-center"
+              style="background-image: url(/<%= posts[i].imgUrl%>);">
+              <div class="overlay"></div>
+              <div class="text text-center">
 
-									<span class="tag"><%= posts[i].caption %></span>
-								</div>
-							</a>
-						</div>
-            <%}%>
+                <span class="tag"><%= posts[i].caption %></span>
+              </div>
+            </a>
+          </div>
+          <%}%>
 					</div>
 				</div>
 			</section>

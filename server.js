@@ -2,26 +2,23 @@
 
 // set up ======================================================================
 // get all the tools we need
-var express  = require('express');
-var app      = express();
-var port     = process.env.PORT || 7777;
+var express = require('express');
+var app = express();
+var port = process.env.PORT || 7777;
 // const MongoClient = require('mongodb').MongoClient
 const ObjectId = require('mongodb').ObjectID
 var mongoose = require('mongoose');
 var passport = require('passport');
-var flash    = require('connect-flash');
+var flash = require('connect-flash');
 const multer = require('multer');
-var morgan       = require('morgan');
+var morgan = require('morgan');
 var cookieParser = require('cookie-parser');
-var bodyParser   = require('body-parser');
-var session      = require('express-session');
+var bodyParser = require('body-parser');
+var session = require('express-session');
 
 var configDB = require('./config/database.js');
 
 var db
-
-
-
 
 // configuration ===============================================================
 mongoose.set('useNewUrlParser', true);

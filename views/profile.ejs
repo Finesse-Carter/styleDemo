@@ -92,10 +92,6 @@
           <ul>
             <li class="colorlib-active"><a href="/profile">Home</a></li>
             <li><a href="/gallery">Gallery</a></li>
-            <!-- <li><a href="/fits">Outfits</a></li> -->
-            <!-- <li><a href="/about">About</a></li> -->
-            <!-- <li><a href="/blog">Blog</a></li> -->
-            <!-- <li><a href="/contact">Contact</a></li> -->
           </ul>
         </nav>
 
@@ -103,10 +99,10 @@
           <h3>Follow Us Here!</h3>
           <div class="d-flex justify-content-center">
             <ul class="d-flex align-items-center">
-              <!-- <li class="d-flex align-items-center jusitfy-content-center"><a href="#"><i class="icon-facebook"></i></a></li> -->
+              <li class="d-flex align-items-center jusitfy-content-center"><a href="#"><i class="icon-facebook"></i></a></li>
               <li class="d-flex align-items-center jusitfy-content-center"><a
                 href="https://twitter.com/CarterFinesse"><i class="icon-twitter"></i></a></li>
-                <!-- <li class="d-flex align-items-center jusitfy-content-center"><a href="#"><i class="icon-instagram"></i></a></li> -->
+                <li class="d-flex align-items-center jusitfy-content-center"><a href="#"><i class="icon-instagram"></i></a></li>
                 <li class="d-flex align-items-center jusitfy-content-center"><a
                   href="https://www.linkedin.com/in/finesse-carter-dev/"><i class="icon-linkedin"></i></a></li>
                 </ul>
@@ -128,11 +124,10 @@
                         <div class="overlay"></div>
                         <div class="text text-center">
                           <h3><%= posts[i].title %></h3>
-                           <span class="tag"  data-likes="<%= posts[i].likes %>"></span><%= posts[i].likes %></span>
-                          <span><i class="fa fa-heart" aria-hidden="true"></i></span>
+                           <!-- <span class="tag"  data-likes="<%= posts[i].likes %>"></span><%= posts[i].likes %></span>
+                          <span><i class="fa fa-heart" aria-hidden="true"></i></span> -->
                           <h3 class="tag"><%= posts[i].caption %></h3>
-                          <!-- <h3>Work 01</h3>
-                          <span class="tag">Model</span> -->
+                        
                         </div>
                       </a>
 
@@ -165,7 +160,7 @@
                     </section>
                     <!-- <span class="tag likes <%= posts[i].liked%>" data-likes="<%= posts[i].likes%>"  data-id="<%= posts[i]._id%>"><%= posts[i].likes %><i class="fa fa-heart like" aria-hidden="true"></i></span> -->
                      
-                    <!-- <button id="delete_<%=posts[i]._id%>" class='deletePic' data-id="<%= posts[i]._id%>">DELETE</button> -->
+                    
                     <i class="deletePic far fa-trash-alt" id="delete_<%=posts[i]._id%>" data-id="<%= posts[i]._id%>"></i>
                     <a href="/profile/fits/<%= posts[i]._id%>  " class="matchPic">
                       <i class="fas fa-swatchbook"></i>
@@ -201,10 +196,9 @@
           <script src="/js/aos.js"></script>
           <script src="/js/jquery.animateNumber.min.js"></script>
           <script src="/js/bootstrap-datepicker.js"></script>
-          <!-- <script src="js/jquery.timepicker.min.js"></script> -->
+         
           <script src="/js/scrollax.min.js"></script>
-          <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script> -->
-          <!-- <script src="js/google-map.js"></script> -->
+         
           <script src="/js/main.js"></script>
           <script src="/main.js"></script>
 
