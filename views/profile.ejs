@@ -49,11 +49,10 @@
 
       </div>
       <div class="col-sm-6">
+        <!-- This is the form icon-->
 <i class=" ham fas fa-plus" onclick="nav()" ></i>
 
         <div class="side">
-
-
   <h2>Add a post</h2>
   <form action="/qpPost" enctype="multipart/form-data" method="post">
     <input type="text" name="title" value="" placeholder="Title" >
@@ -111,6 +110,7 @@
             <section class="ftco-section-2">
               <div class="photograhy">
                 <div class="row no-gutters">
+                  <!-- This for loop generates the images that the user uploads-->
                   <% for(let i = 0; i < posts.length; i++){    %>
                     <div class="col-md-4 ftco-animate">
                       <a href="<%= posts[i].imgUrl%>" data-color="<%= posts[i].imgUrl%>"
@@ -137,7 +137,7 @@
                           </li>
                         </ul>
                         <ul class="dotList">
-
+<!--This for loop is shows the color platte-->
                           <% for(let a = 0; a < posts[i].colors.length; a++){    %>
                             <li class="colorDot far fa-circle"
                             style="background-color: rgb(<%= posts[i].colors[a].r %>,<%= posts[i].colors[a].g %>,<%= posts[i].colors[a].b %>);">

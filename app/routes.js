@@ -35,7 +35,6 @@ module.exports = function (app, passport, db, multer, ObjectId) {
           posts: result   //post = result from DB
         })
       })
-      // })
     }
 
   });
@@ -89,7 +88,7 @@ module.exports = function (app, passport, db, multer, ObjectId) {
       'defaultImgs/img01ff.jpg',
       'defaultImgs/Travis-Scott-Highest-In-The-Room-Tee-Tie-Dye.jpg'
     ]
-    
+
     let caption;
     let clothing;
     let title;
@@ -116,7 +115,7 @@ module.exports = function (app, passport, db, multer, ObjectId) {
       let colorRGBPalette = []
 
       newColorPalette.forEach(element => {
-       
+
         let colorContainer = {}
         let colorMatches = element.map((element, index) => {
           if (index === 0) {
@@ -198,7 +197,7 @@ module.exports = function (app, passport, db, multer, ObjectId) {
             })
           }
         } else {
- /// do nothing
+          /// do nothing
         }
       })
       console.log(newResultArray, "filtered results")
@@ -223,8 +222,8 @@ module.exports = function (app, passport, db, multer, ObjectId) {
     let uId = ObjectId(req.session.passport.user);
     var outFitId = ObjectId(req.params.outFit);
     db.collection('posts').findOne({ "_id": outFitId }, (err1, targeOutFit) => {
-      if (err1) return console.log(err1)      
-      let newColorArray = targeOutFit.colors      
+      if (err1) return console.log(err1)
+      let newColorArray = targeOutFit.colors
       db.collection('posts').find({ "posterId": uId }).toArray((err, allOutFits) => {
         if (err) return console.log(err)
 
@@ -234,7 +233,7 @@ module.exports = function (app, passport, db, multer, ObjectId) {
             ((targeOutFit.clothing === null) || (targeOutFit.clothing !== outFit.clothing)))
         }
         let filteredOutTargetOutfit = allOutFits.filter(myFilter)
-       
+
         let matchingOutFits = color.match(newColorArray, filteredOutTargetOutfit);
         res.render('fits.ejs', {
           target: targeOutFit,
@@ -259,8 +258,12 @@ module.exports = function (app, passport, db, multer, ObjectId) {
   //Create Post =========================================================================
   app.post('/qpPost', isLoggedIn, upload.single('file-to-upload'), (req, res, next) => {
 
+    /*This is the form where you can upload your images, write your tittles and captions.
+This form also grabs the color plattet from each image after upload.
+And then saves all the information to the data base.
+*/
+
     console.log(req.file.path, 'filepath')
-    // app.post('/images/uploads', isLoggedIn,  upload.array('file-to-upload', 12), (req, res, next) => {  //one picture to post   //next????
     let uId = ObjectId(req.session.passport.user) // uId === the individual
     var colorThief = new ColorThief();
     let primeColor = colorThief.getColor(req.file.path);
@@ -294,7 +297,7 @@ module.exports = function (app, passport, db, multer, ObjectId) {
       colorRGBPalette.push(colorContainer);
     });
     colorRGBPalette.push(primeColorObj);
-    
+
     db.collection('posts').save({
       posterId: uId,
       caption: req.body.caption,
@@ -381,10 +384,6 @@ module.exports = function (app, passport, db, multer, ObjectId) {
       res.send('Message deleted!')
     })
   })
-
-
-
-
 
   // =============================================================================
   // AUTHENTICATE (FIRST LOGIN) ==================================================

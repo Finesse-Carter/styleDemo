@@ -7,7 +7,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 
-
   <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
 
   <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700" rel="stylesheet">
@@ -51,10 +50,12 @@
         <h3>Follow Us Here!</h3>
         <div class="d-flex justify-content-center">
           <ul class="d-flex align-items-center">
-            <li class="d-flex align-items-center jusitfy-content-center"><a href="#"><i class="icon-facebook"></i></a></li>
+            <li class="d-flex align-items-center jusitfy-content-center"><a href="#"><i class="icon-facebook"></i></a>
+            </li>
             <li class="d-flex align-items-center jusitfy-content-center"><a href="https://twitter.com/CarterFinesse"><i
                   class="icon-twitter"></i></a></li>
-            <li class="d-flex align-items-center jusitfy-content-center"><a href="#"><i class="icon-instagram"></i></a></li>
+            <li class="d-flex align-items-center jusitfy-content-center"><a href="#"><i class="icon-instagram"></i></a>
+            </li>
             <li class="d-flex align-items-center jusitfy-content-center"><a
                 href="https://www.linkedin.com/in/finesse-carter-dev/"><i class="icon-linkedin"></i></a></li>
           </ul>
@@ -75,12 +76,11 @@
       <section class="ftco-section-2">
         <div class="photograhy">
           <div class="row no-gutters">
-
+            <!-- this for loop retruns all of the images that have been posted to the feed-->
             <% for(let i = 0; i < posts.length; i++){    %>
             <%if (posts[i].shareFeed==="on") { %>
 
             <div class="col-md-4 ftco-animate">
-
 
               <a href="<%= posts[i].imgUrl%>" data-color="<%= posts[i].imgUrl%>"
                 class="photography-entry img image-popup d-flex justify-content-center align-items-center"

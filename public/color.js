@@ -1,10 +1,9 @@
 var chromatism = require('chromatism');
 
-//   console.log("this is a test",test)
-// this will return the best matching outfits
+/* this will return the best matching outfits.*/
+
 function match(targeOutFit, allOutFits) {
   // return for testing, them all
-  // console.log(targeOutFit, 'userO')
   let colorMatches = [];
 
   targeOutFit.forEach(colour => {
@@ -14,7 +13,6 @@ function match(targeOutFit, allOutFits) {
 
   let userOutfits = allOutFits;
 
-
   let rgbOutfitMatches = userOutfits.filter((rgb =>
     checkRGBMatches(rgb.colors, colorMatches)
   ))
@@ -23,11 +21,9 @@ function match(targeOutFit, allOutFits) {
 
 function checkRGBMatches(outfits, colorMatches) {
 
-  console.log(outfits, 'clothes too match')
-  // console.log(colorMatches, "cMatches")
-
+  
   let result;
-
+// This is the color matching algorithm
   outfits.forEach(outfitColors => {
 
     dance:
@@ -39,7 +35,6 @@ function checkRGBMatches(outfits, colorMatches) {
         let colors = rgb[i];      
         let stuff = (colors.r + 20 > outfitColors.r && colors.r - 20 < outfitColors.r && colors.g + 20 > outfitColors.g && colors.g - 20 < outfitColors.g && colors.b + 20 > outfitColors.b && colors.b - 20 < outfitColors.b)
         if (stuff) {
-          console.log("success");
           result = true
           break dance
         } else {

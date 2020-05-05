@@ -1,9 +1,4 @@
-var ham = document.getElementsByClassName('fa-plus')
-var thumbUp = document.getElementsByClassName("fa-thumbs-up");
-var trash = document.getElementsByClassName("fa-trash");
-var thumbDown = document.getElementsByClassName("fa-thumbs-down")
 var deletePic = document.getElementsByClassName('deletePic')
-
 
 function nav() {
   document.querySelector('.side').style.display = "block";
@@ -11,14 +6,13 @@ function nav() {
 
 // likes================================================
 var likes = document.getElementsByClassName("likes");
-
+// This is the heart icon
 
 Array.from(likes).forEach(function (element) {
   element.addEventListener('click', function () {
 
     const _id = element.getAttribute('data-id');
-    console.log(_id, "iiddddd");
-
+   
     const likes = element.getAttribute("data-likes");
 
     if (element.classList.contains('liked')) {
@@ -35,10 +29,7 @@ Array.from(likes).forEach(function (element) {
       })
 
         .then((response) => {
-          console.log(response, 'wwwwwwwww');
 
-
-          // console.log('Success:', data); 
           window.location.reload(true)
         })
         .catch((error) => {
@@ -59,10 +50,7 @@ Array.from(likes).forEach(function (element) {
       })
 
         .then((response) => {
-          console.log(response, "something");
-
-
-          // console.log('Success:', data); 
+    
           window.location.reload(true)
         })
         .catch((error) => {
@@ -72,7 +60,7 @@ Array.from(likes).forEach(function (element) {
   })
 });
 //===========================================
-
+// This is the delete icon
 
 Array.from(deletePic).forEach(function (element) {
   element.addEventListener('click', function () {
