@@ -38,9 +38,8 @@ module.exports = function (app, passport, db, multer, ObjectId) {
     }
 
   });
-  app.get('/blog', isLoggedIn, function (req, res) {
-    res.render('blog.ejs');
-  });
+ 
+ 
   app.get('/single', isLoggedIn, function (req, res) {
     res.render('single.ejs');
   });
