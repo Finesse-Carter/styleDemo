@@ -72,14 +72,21 @@ module.exports = function (app, passport, db, multer, ObjectId) {
   app.get('/profile', isLoggedIn, function (req, res) {
 
     let uId = ObjectId(req.session.passport.user)   //uId = unique id from passport
-    let images = [
-      "public\\images\\defaultImgs\\34e5d299d5373b03309152bf20fbc766.jpg",
-      'public\\images\\defaultImgs\\94cb42de8ebbd882789e492f4f0de123.jpg',
-      'public\\images\\defaultImgs\\3781c13dc34f9ebf027a856069398f92.jpg',
-      'public\\images\\defaultImgs\\img01ff.jpg',
-      'public\\images\\defaultImgs\\Travis-Scott-Highest-In-The-Room-Tee-Tie-Dye.jpg'
-    ]
+    // let images = [
+    //   "public\\images\\defaultImgs\\34e5d299d5373b03309152bf20fbc766.jpg",
+    //   'public\\images\\defaultImgs\\94cb42de8ebbd882789e492f4f0de123.jpg',
+    //   'public\\images\\defaultImgs\\3781c13dc34f9ebf027a856069398f92.jpg',
+    //   'public\\images\\defaultImgs\\img01ff.jpg',
+    //   'public\\images\\defaultImgs\\Travis-Scott-Highest-In-The-Room-Tee-Tie-Dye.jpg'
+    // ]
 
+    let images = [
+      "public/images/defaultImgs/34e5d299d5373b03309152bf20fbc766.jpg",
+      'public/images/defaultImgs/94cb42de8ebbd882789e492f4f0de123.jpg',
+      'public/images/defaultImgs/3781c13dc34f9ebf027a856069398f92.jpg',
+      'public/images/defaultImgs/img01ff.jpg',
+      'public/images/defaultImgs/Travis-Scott-Highest-In-The-Room-Tee-Tie-Dye.jpg'
+    ]
     let names = [
       "defaultImgs/34e5d299d5373b03309152bf20fbc766.jpg",
       'defaultImgs/94cb42de8ebbd882789e492f4f0de123.jpg',
