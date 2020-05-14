@@ -1,4 +1,6 @@
 var chromatism = require('chromatism');
+//In this function,is storing all of the RGB values of the clothing that the user has uploaded 
+//and the specific image RGB’s values of the images the user wants to match.
 
 /* this will return the best matching outfits.*/
 
@@ -23,10 +25,12 @@ function checkRGBMatches(outfits, colorMatches) {
 
   
   let result;
-// This is the color matching algorithm
+// This is the color matching algorithm, where I loop through every outfit and then compare there RGB values to 
+// the outfits the user is trying to match and if we find complementary colors then return that outfit.
+
   outfits.forEach(outfitColors => {
 
-    dance:
+    match:
     for (let index = 0; index < colorMatches[0].length; index++) {
 
       let rgb = colorMatches[index];
@@ -36,7 +40,7 @@ function checkRGBMatches(outfits, colorMatches) {
         let stuff = (colors.r + 20 > outfitColors.r && colors.r - 20 < outfitColors.r && colors.g + 20 > outfitColors.g && colors.g - 20 < outfitColors.g && colors.b + 20 > outfitColors.b && colors.b - 20 < outfitColors.b)
         if (stuff) {
           result = true
-          break dance
+          break match
         } else {
           result = false
         }

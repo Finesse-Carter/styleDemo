@@ -72,14 +72,7 @@ module.exports = function (app, passport, db, multer, ObjectId) {
   app.get('/profile', isLoggedIn, function (req, res) {
 
     let uId = ObjectId(req.session.passport.user)   //uId = unique id from passport
-    // let images = [
-    //   "public\\images\\defaultImgs\\34e5d299d5373b03309152bf20fbc766.jpg",
-    //   'public\\images\\defaultImgs\\94cb42de8ebbd882789e492f4f0de123.jpg',
-    //   'public\\images\\defaultImgs\\3781c13dc34f9ebf027a856069398f92.jpg',
-    //   'public\\images\\defaultImgs\\img01ff.jpg',
-    //   'public\\images\\defaultImgs\\Travis-Scott-Highest-In-The-Room-Tee-Tie-Dye.jpg'
-    // ]
-
+  
     let images = [
       "public/images/defaultImgs/34e5d299d5373b03309152bf20fbc766.jpg",
       'public/images/defaultImgs/94cb42de8ebbd882789e492f4f0de123.jpg',
@@ -99,6 +92,10 @@ module.exports = function (app, passport, db, multer, ObjectId) {
     let clothing;
     let title;
 
+    //what we are looking at here is grabbing the value for the dominant color.
+// Here we upload the pictures to the Color-thief and we get back an array of numbers that are RGB value. 
+// Chromatism expects an object of RGB values so after restructuring data save it to the data base.
+
     images.forEach((image, index) => {
 
       var colorThief = new ColorThief();
@@ -116,7 +113,12 @@ module.exports = function (app, passport, db, multer, ObjectId) {
 
       });
 
-      let colorPalette = colorThief.getPalette(image, 8);
+      //what we are looking at here is grabbing the values for the palette of primary colors.
+
+      // Here we upload the pictures to Color-thief and we get back an array of numbers that represent RGB value. 
+//But Chromatism expects the color to be an object of RGB values after restructuring the data save it to the data base.
+  
+let colorPalette = colorThief.getPalette(image, 8);
       let newColorPalette = colorPalette;
       let colorRGBPalette = []
 
@@ -148,11 +150,8 @@ module.exports = function (app, passport, db, multer, ObjectId) {
 
           newResultArray = result.filter((post) => check(post.imgPath))
 
-          console.log(newResultArray, "first result")
-
           function check(post) {
-            console.log(post, 'post post post');
-
+            
             let result;
 
             var str = post;
@@ -168,7 +167,7 @@ module.exports = function (app, passport, db, multer, ObjectId) {
             return result
           }
           if (newResultArray.length === 5) {
-            console.log('no need to create')
+            console.log('create')
 
           } else {
 
@@ -185,9 +184,7 @@ module.exports = function (app, passport, db, multer, ObjectId) {
               clothing = 'test'
               title = 'test'
               caption = 'test'
-
             }
-
             db.collection('posts').save({
               posterId: uId,
               caption: caption,
@@ -209,7 +206,7 @@ module.exports = function (app, passport, db, multer, ObjectId) {
       console.log(newResultArray, "filtered results")
     })
     if (req.user.local.email) {
-      console.log(req.user.local.email, 'hey i am here');
+      console.log(req.user.local.email, 'user');
 
       setTimeout(function () {
         db.collection('posts').find({ 'posterId': uId }).sort({ '_id': -1 }).toArray((err, result) => {
@@ -223,7 +220,7 @@ module.exports = function (app, passport, db, multer, ObjectId) {
       }, 3000);
     }
   });
-
+// after the user clicks on the match color button we trigger
   app.get('/profile/fits/:outFit', isLoggedIn, function (req, res) {
     let uId = ObjectId(req.session.passport.user);
     var outFitId = ObjectId(req.params.outFit);
