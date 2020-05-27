@@ -92,9 +92,9 @@ module.exports = function (app, passport, db, multer, ObjectId) {
     let clothing;
     let title;
 
-    //what we are looking at here is grabbing the value for the dominant color.
-// Here we upload the pictures to the Color-thief and we get back an array of numbers that are RGB value. 
-// Chromatism expects an object of RGB values so after restructuring data save it to the data base.
+    //what we are looking at here is grabbing the value of the dominant color.
+// Here we upload the pictures to the Color-thief and we get back an array of numbers that are RGB values. 
+// Chromatism expects an object of RGB values, so after restructuring the data then save it so it will be saved to the data base.
 
     images.forEach((image, index) => {
 
@@ -113,11 +113,8 @@ module.exports = function (app, passport, db, multer, ObjectId) {
 
       });
 
-      //what we are looking at here is grabbing the values for the palette of primary colors.
-
-      // Here we upload the pictures to Color-thief and we get back an array of numbers that represent RGB value. 
-//But Chromatism expects the color to be an object of RGB values after restructuring the data save it to the data base.
-  
+      //what we are looking at here is grabbing the values for the color palette of primary colors.
+      
 let colorPalette = colorThief.getPalette(image, 8);
       let newColorPalette = colorPalette;
       let colorRGBPalette = []

@@ -1,5 +1,5 @@
 var chromatism = require('chromatism');
-//In this function,is storing all of the RGB values of the clothing that the user has uploaded 
+//In this function,it is storing all of the RGB values of the clothing that the user has uploaded 
 //and the specific image RGB’s values of the images the user wants to match.
 
 /* this will return the best matching outfits.*/
