@@ -9,7 +9,7 @@
 2. Navigate to `localhost:7777`
 
 ## <img src="Screenshot1.png">
-## <img src="Screenshot2222.png">
+## <img src="screenshot2222.png">
 ​
 ## URL 
 ​- https://style-demo.herokuapp.com/
